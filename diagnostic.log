@@ -1,0 +1,75 @@
+2026-11-16 15:12:29,848 INFO --- Diagnostic run start ---
+2026-11-16 15:12:30,866 INFO Starting Flask server in background…
+2026-11-16 15:12:35,430 INFO Flask server is now up after 3 sec
+2026-11-16 15:12:38,074 INFO Configured model paths: C:\Users\krish\Downloads\AI-DL-project\models\helmet_violation_best.pt, C:\Users\krish\Downloads\AI-DL-project\models\helmet_yolov8n.pt, C:\Users\krish\Downloads\AI-DL-project\models\yolov8n.pt
+2026-11-16 15:12:38,229 INFO Detector initialised – model_mode: Ensemble YOLOv8 (helmet_violation_best.pt + helmet_yolov8n.pt)
+2026-11-16 15:12:41,323 INFO Detection completed. Detections count: 2
+2026-11-16 15:12:41,326 DEBUG Detections: [
+  {
+    "class": "Rider",
+    "confidence": 0.682,
+    "bbox": [
+      286,
+      237,
+      541,
+      524
+    ],
+    "is_violation": false
+  },
+  {
+    "class": "Without Helmet",
+    "confidence": 0.55,
+    "bbox": [
+      356,
+      237,
+      470,
+      308
+    ],
+    "is_violation": true
+  }
+]
+2026-11-16 15:12:41,327 ERROR Error during detection on image data\samples\sample_helmet_violation.jpg: Object of type ndarray is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\krish\Downloads\AI-DL-project\diagnostic.py", line 83, in test_direct_detector
+    log.info("Stats: %s", json.dumps(stats, indent=2))
+                          ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\krish\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "C:\Users\krish\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\krish\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\krish\AppData\Local\Python\pythoncore-3.14-64\Lib\json\encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type ndarray is not JSON serializable
+when serializing dict item 'crop'
+when serializing list item 0
+when serializing dict item 'crops'
+2026-11-16 15:12:41,545 DEBUG Starting new HTTP connection (1): 127.0.0.1:5000
+2026-11-16 15:12:44,906 DEBUG http://127.0.0.1:5000 "POST /api/detect/image HTTP/1.1" 500 265
+2026-11-16 15:12:44,907 INFO POST /api/detect/image status: 500
+2026-11-16 15:12:44,907 ERROR Response is not valid JSON: Expecting value: line 1 column 1 (char 0)
+2026-11-16 15:12:44,908 DEBUG Raw response text: <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+2026-11-16 15:12:44,909 DEBUG Starting new HTTP connection (1): 127.0.0.1:5000
+2026-11-16 15:12:52,940 DEBUG http://127.0.0.1:5000 "POST /api/detect/video HTTP/1.1" 200 3014
+2026-11-16 15:12:52,940 INFO POST /api/detect/video status: 200
+2026-11-16 15:12:52,941 DEBUG Video response JSON (truncated): {"all_detections": [{"bbox": [282, 175, 497, 423], "class": "Rider", "confidence": 0.561, "is_violation": false}, {"bbox": [341, 175, 437, 237], "class": "Helmet", "confidence": 0.75, "is_violation": false}, {"bbox": [299, 175, 471, 418], "class": "Rider", "confidence": 0.789, "is_violation": false}, {"bbox": [347, 175, 423, 235], "class": "Helmet", "confidence": 0.75, "is_violation": false}, {"bbox": [284, 174, 485, 420], "class": "Rider", "confidence": 0.727, "is_violation": false}, {"bbox": [
+2026-11-16 15:12:52,944 DEBUG Starting new HTTP connection (1): 127.0.0.1:5000
+2026-11-16 15:12:53,364 DEBUG http://127.0.0.1:5000 "POST /api/detect/frame HTTP/1.1" 500 265
+2026-11-16 15:12:53,365 INFO POST /api/detect/frame status: 500
+2026-11-16 15:12:53,365 ERROR Webcam response not valid JSON: Expecting value: line 1 column 1 (char 0)
+2026-11-16 15:12:53,365 DEBUG Raw response text: <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+2026-11-16 15:12:53,365 INFO Terminating Flask server started for diagnostics…
+2026-11-16 15:12:53,368 INFO --- Diagnostic run end ---
